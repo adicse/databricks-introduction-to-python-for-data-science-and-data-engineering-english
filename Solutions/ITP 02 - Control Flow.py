@@ -55,6 +55,27 @@ else:
 
 # COMMAND ----------
 
+# A more practical example
+# Enter a number (at the top of the display)
+
+dbutils.widgets.text("input", "1", "Enter a number from 1 - 10")  #We're setting 1 as the default value
+input = dbutils.widgets.get("input")
+
+# COMMAND ----------
+
+# Evaluate the input
+
+input_as_number = int(input)
+if input_as_number >= 1 and input_as_number <= 10:
+    print("Valid Input")
+else:
+    print("Invalid Input")
+    
+# Remove the widget
+dbutils.widgets.remove("input")
+
+# COMMAND ----------
+
 # MAGIC %md <i18n value="d521ae49-84e2-42e1-88e2-ec13549e726d"/>
 # MAGIC 
 # MAGIC 

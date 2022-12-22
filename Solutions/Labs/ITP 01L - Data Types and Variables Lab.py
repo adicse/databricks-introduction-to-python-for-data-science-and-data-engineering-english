@@ -49,6 +49,36 @@ print("Test passed!")
 
 # COMMAND ----------
 
+# MAGIC %md <i18n value="TBD"/>
+# MAGIC 
+# MAGIC ## Bonus Exercise:
+# MAGIC * Define a variable **`num_students`** and set it equal to the number of students in the class.
+# MAGIC * Define a variable **`num_days`** and set it equal to the number of class days.
+# MAGIC * Define a variable **`class_name`** and set it equal to the name of this class.
+# MAGIC 
+# MAGIC * Define the string **`class_information`**  as follows: "There are **`num_students`** * **`num_days`** student days in the **`class_name`**" using f-string formatting.  Make sure to print the product of students and days.
+# MAGIC * Print the string  **`class_information`**
+
+# COMMAND ----------
+
+# ANSWER
+num_students = 16
+num_days = 2
+class_name = "introduction-to-python-for-data-science-and-data-engineering"
+course_information = f"There are {num_students * num_days} student days in the {class_name}"
+
+print(course_information)
+
+# COMMAND ----------
+
+assert type(class_name) == str, "Name should be a string"
+assert type(num_students) == int, "Use an integer"
+assert course_information == f"There are {num_students * num_days} student days in the {class_name}"
+
+print("Test passed!")
+
+# COMMAND ----------
+
 # MAGIC %md-sandbox
 # MAGIC &copy; 2022 Databricks, Inc. All rights reserved.<br/>
 # MAGIC Apache, Apache Spark, Spark and the Spark logo are trademarks of the <a href="https://www.apache.org/">Apache Software Foundation</a>.<br/>

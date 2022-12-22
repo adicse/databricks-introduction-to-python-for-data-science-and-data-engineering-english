@@ -61,7 +61,7 @@ def detention_helper(detention_message, num_lines):
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="7c5729b0-a8b5-4122-8574-44fa9053877c"/>
+# MAGIC %md <i18n value="5cbae134-c726-4874-b416-a2b802236a6f"/>
 # MAGIC 
 # MAGIC  
 # MAGIC Call your function below with the correct inputs for Bart's current detention and make sure you can see "I will not let my dog eat my homework" printed out 50 times, with the lines numbered, as shown in the problem description.
@@ -70,6 +70,116 @@ def detention_helper(detention_message, num_lines):
 
 # ANSWER
 detention_helper("I will not let my dog eat my homework", 50)
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="75896d4c-b9af-4bd3-acbd-8f7e47d43be0"/>
+# MAGIC 
+# MAGIC ##Bonus Exercise
+# MAGIC Rewrite the for loop above as a while-loop
+
+# COMMAND ----------
+
+# ANSWER
+def detention_helper(detention_message, num_lines):
+    i=0
+    while i < num_lines:
+        i += 1
+        print(f"{i}. {detention_message}")
+        
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="188c6b2a-e436-4dfa-962d-ae1e8cf733eb"/>
+# MAGIC 
+# MAGIC Call your function below with the correct inputs for Bart's current detention and make sure you can see "I will do my python homework" printed out 25 times, with the lines numbered, as shown in the problem description.
+
+# COMMAND ----------
+
+# ANSWER
+detention_helper("I will do my python homework", 25)
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="cd5b48af-8534-4d40-a74b-ec9cdd892a33"/>
+# MAGIC 
+# MAGIC ### Bonus Exercise
+# MAGIC 
+# MAGIC Below is the code used to display a table of cities and their respective temperatures and humidities from a previous notebook.
+# MAGIC 
+# MAGIC Modify the code to use lists and loops instead of repetitive variables.
+
+# COMMAND ----------
+
+# TODO: Modify the code below to use lists and loops instead repetitive variables.
+
+# city1 = "San Francisco" # Replace with a list named "cities"
+# city2 = "Paris"
+# city3 = "Mumbai"
+
+# temperature1 = 58       # Replace with a list named "temperatures"
+# temperature2 = 75
+# temperature3 = 81
+
+# humidity1 = .85         # Replace with a list named "humidities"
+# humidity2 = .5
+# humidity3 = .88 
+
+# print(f"{'City':15} {'Temperature':15} {'Humidity':15}")
+# print(f"{city1:15} {temperature1:11} {humidity1:12.2f}")
+# print(f"{city2:15} {temperature2:11} {humidity2:12.2f}")
+# print(f"{city3:15} {temperature3:11} {humidity3:12.2f}")
+
+# COMMAND ----------
+
+# ANSWER: Option 1
+city_list = ["San Francisco", "Paris", "Mumbai"]
+temperature_list = [58, 75, 81]
+humidity_list = [.85, .5, .88]
+
+print(f"{'City':15} {'Temperature':15} {'Humidity':15}")
+i = 0
+while (i < len(city_list)):
+    print(f"{city_list[i]:15} {temperature_list[i]:11} {humidity_list[i]:12.2f}")
+    i = i + 1
+
+# COMMAND ----------
+
+# ANSWER: Option 2
+list = [["San Francisco", 58, .85], ["Paris", 75, .5], ["Mumbai", 81, .88]]
+
+print(f"{'City':15} {'Temperature':15} {'Humidity':15}")
+for i in list:
+    print(f"{i[0]:15} {i[1]:11} {i[2]:12.2f}")
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="7799d859-cb3c-46ac-87e2-414d95de6fcf"/>
+# MAGIC 
+# MAGIC ### Bonus Exercise
+# MAGIC 
+# MAGIC Write a function named `item_count` that accepts a list of values and returns a dictionary with a count of the number of times each unique value appeared in the list
+# MAGIC - For example, `item_count(['a', 'b', 'a'])` should return the dictionary `{'a': 2, 'b': 1}`
+
+# COMMAND ----------
+
+# ANSWER
+def item_count(input_list):
+    output_dict = {}  # Initialize an empty dictionary
+  
+    for item in input_list:
+        if item not in output_dict:
+      # Create an element for the item with an initial count of 1
+            output_dict[item] = 1
+    else:
+      # Add 1 to the current count for the item
+        output_dict[item] += 1
+      
+    return output_dict
+
+# COMMAND ----------
+
+assert item_count(['a', 'b', 'a']) == {'a': 2, 'b': 1}, "There should be 2 occurrences of the letter 'a' and one occurrence of the letter 'b'"
 
 # COMMAND ----------
 

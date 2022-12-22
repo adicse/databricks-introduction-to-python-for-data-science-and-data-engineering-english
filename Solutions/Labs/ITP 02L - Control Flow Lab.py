@@ -22,7 +22,7 @@
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="67b30eef-2bb7-405b-b750-905b74557169"/>
+# MAGIC %md <i18n value="4d276a26-f723-4ccc-bfe5-3ad2c0b14f90"/>
 # MAGIC 
 # MAGIC 
 # MAGIC ### Food Recommender
@@ -53,10 +53,96 @@ else:
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="50e00f9a-3fe3-41c6-8f52-d5526cb52e67"/>
+# MAGIC %md <i18n value="7f61fbe1-880d-450f-b1df-26c7450378cc"/>
 # MAGIC 
 # MAGIC 
 # MAGIC Try changing the values of **`temperature`** and **`sunny`** and make sure it recommends the proper foods!
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="9ff5549b-cf14-4943-b89d-fd65ee6a260a"/>
+# MAGIC 
+# MAGIC 
+# MAGIC ## Bonus Exercise 
+# MAGIC 
+# MAGIC For this part of the lab, write the control flow logic for car maintenance. Users provide the following input:
+# MAGIC 
+# MAGIC *  **`km_since_last_change`**: An integer representing the number of kilometers since the last oil change
+# MAGIC *  **`oil_change_light`**: A boolean set to **`True`** if the oil change light is on, **`False`** otherwise. 
+# MAGIC 
+# MAGIC Write the system to print the following recommendations:
+# MAGIC 
+# MAGIC * If it is at least 15000 kilometers since last oil change AND the light is on, recommend `oil change`.
+# MAGIC * If it is at least 15000 kilometers since last oil change AND the light is off, recommend `wait`.
+# MAGIC * If it is less than 15000 kilometers since last oil change regardless of the light, recommend `wait`.
+
+# COMMAND ----------
+
+# ANSWER
+km_since_last_change = 15000
+oil_change_light = True
+
+if km_since_last_change >= 15000 and oil_change_light :
+    print("Time for an oil change")
+elif km_since_last_change >= 15000 and not oil_change_light:
+    print("Wait for the light")
+else:
+    print("Wait longer")
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="5cbae134-c726-4874-b416-a2b802236a6f"/>
+# MAGIC 
+# MAGIC ### Bonus Exercise
+# MAGIC 
+# MAGIC A year is considered a leap year if it.
+# MAGIC - Is evenly divisible by 4 AND ...
+# MAGIC   - Is either evenly divisible by 400 (e.g. 2000 was a leap year) OR not evenly divisible by 100 (e.g. 2100 will not be a leap year).
+# MAGIC - How do you know if a number is evenly divisible by another number?
+# MAGIC   - Modulo division
+# MAGIC     - 2000 % 4 == 0: True
+# MAGIC     - 1901 % 4 == 0: False
+# MAGIC   
+# MAGIC Write code to implement the logic described above.
+# MAGIC - Name the independent variable __year__.
+# MAGIC - Name the dependent variable named __is_leap_year__.
+# MAGIC - Test the code for the following years:
+# MAGIC   - 1900
+# MAGIC   - 1901
+# MAGIC   - 1904
+# MAGIC   - 2000
+# MAGIC 
+# MAGIC **Hint**: The nested indentation in the instruction suggests that nested logic may be appropriate here.
+
+# COMMAND ----------
+
+dbutils.widgets.text("year", "2022", "Enter Year Here")
+
+# COMMAND ----------
+
+# ANSWER
+year = int(dbutils.widgets.get("year"))
+is_leap_year = False
+if year % 4 == 0:
+    if year % 400 == 0 or year % 100 != 0:
+        is_leap_year = True
+
+# COMMAND ----------
+
+# Check your work
+
+if year == 1900:
+    assert year == 1900 and is_leap_year == False, "Error: 1900 was not a leap year"
+elif year == 1901:
+    assert year == 1901 and is_leap_year == False, "Error: 1901 was not a leap year"
+elif year == 1904:
+    assert year == 1904 and is_leap_year == True, "Error: 1904 was a leap year"
+elif year == 2000:
+    assert year == 2000 and is_leap_year == True, "Error: 2000 was a leap year"
+
+# COMMAND ----------
+
+dbutils.widgets.remove("year")
 
 # COMMAND ----------
 

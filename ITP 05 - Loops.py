@@ -222,6 +222,28 @@ while count > 0:
 
 # COMMAND ----------
 
+# MAGIC %md <i18n value="ddc22fc8-902d-49e5-baa9-62e61cc2f6d8"/>
+# MAGIC 
+# MAGIC ### More fun with repetition
+# MAGIC 
+# MAGIC Python also supports nested loops and ranges.
+
+# COMMAND ----------
+
+for a in range(0,10):
+    for b in range(0,10):
+        for c in range(0,10):
+            print(str(a) +  str(b) + str(c))
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="4d276a26-f723-4ccc-bfe5-3ad2c0b14f90"/>
+# MAGIC 
+# MAGIC If it is not already apparent, the general beauty of a loop is that it decouples the amount of code you write from the size of the data being processed.
+# MAGIC - You can process a list or range of 50,000,000 elements with no more code than it takes to process a list or range of 5 elements.
+
+# COMMAND ----------
+
 # MAGIC %md-sandbox
 # MAGIC &copy; 2022 Databricks, Inc. All rights reserved.<br/>
 # MAGIC Apache, Apache Spark, Spark and the Spark logo are trademarks of the <a href="https://www.apache.org/">Apache Software Foundation</a>.<br/>

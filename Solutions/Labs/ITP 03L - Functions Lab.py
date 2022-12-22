@@ -120,6 +120,52 @@ print("Test passed!")
 
 # COMMAND ----------
 
+# MAGIC %md <i18n value="TBD"/>
+# MAGIC 
+# MAGIC ### Bonus Exercise
+# MAGIC 
+# MAGIC A year is considered a leap year if it.
+# MAGIC - Is evenly divisible by 4 AND ...
+# MAGIC   - Is either evenly divisible by 400 (e.g. 2000 was a leap year) OR not evenly divisible by 100 (e.g. 2100 will not be a leap year).
+# MAGIC - How do you know if a number is evenly divisible by another number?
+# MAGIC   - Modulo division
+# MAGIC     - 2000 % 4 == 0: True
+# MAGIC     - 1901 % 4 == 0: False
+# MAGIC   
+# MAGIC Write code to implement the logic described above as a function.
+# MAGIC - Name the function __is_leap_year__.
+# MAGIC - Define the function to receive a single parameter named __year__.
+# MAGIC - Define the function to return a boolean value:
+# MAGIC   - True if the value of the parameter __year__ is a leap year.
+# MAGIC   - False if the value of the parameter __year__ is a not leap year.
+# MAGIC - Test the code for the following years:
+# MAGIC   - 1900
+# MAGIC   - 1901
+# MAGIC   - 1904
+# MAGIC   - 2000
+# MAGIC 
+# MAGIC **Hint**: The nested indentation in the instruction suggests that nested logic may be appropriate here.
+
+# COMMAND ----------
+
+# ANSWER
+def is_leap_year(year):
+    leap_year = False
+    if year % 4 == 0:
+        if year % 400 == 0 or year % 100 != 0:
+            leap_year = True
+    return leap_year
+
+# COMMAND ----------
+
+assert is_leap_year(1900) == False, "1900 was a leap year"
+assert is_leap_year(1901) == False, "1901 was not a leap year"
+assert is_leap_year(1904) == True, "1904 was a leap year"
+assert is_leap_year(2000) == True, "2000 was a leap year"
+print("All tests passed")
+
+# COMMAND ----------
+
 # MAGIC %md-sandbox
 # MAGIC &copy; 2022 Databricks, Inc. All rights reserved.<br/>
 # MAGIC Apache, Apache Spark, Spark and the Spark logo are trademarks of the <a href="https://www.apache.org/">Apache Software Foundation</a>.<br/>

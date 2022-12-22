@@ -127,6 +127,22 @@ type(1.)
 
 # COMMAND ----------
 
+# MAGIC %md <i18n value="41028e0f-a35d-4e6c-b2c1-241587bb1611"/>
+# MAGIC 
+# MAGIC ### An Aside on Numeric Precision
+# MAGIC 
+# MAGIC Unlike most programming languages, Python numeric precision is theoretically infinite
+
+# COMMAND ----------
+
+99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 + 1
+
+# COMMAND ----------
+
+.9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999 + .0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001
+
+# COMMAND ----------
+
 # MAGIC %md <i18n value="91074620-9816-473f-b513-0fe927585dd7"/>
 # MAGIC 
 # MAGIC 
@@ -260,7 +276,9 @@ c
 # COMMAND ----------
 
 b = "Hello World"
-b
+print(type(b))
+b = 10
+print(type(b))
 
 # COMMAND ----------
 
@@ -311,35 +329,114 @@ print(b)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="7f5bcd26-b2d4-4085-9215-df0c7613cb6f"/>
-# MAGIC 
+# MAGIC %md <i18n value="7219854c-0e16-4b77-81b5-d1240b86c2da"/>
 # MAGIC 
 # MAGIC In addition to printing variable values, you can also print strings.
 
 # COMMAND ----------
 
+print(10)
 print("Hello world")
+print(True)
 
 # COMMAND ----------
 
-# MAGIC %md <i18n value="748550c6-43bd-4265-9cff-420420ab476d"/>
+# MAGIC %md <i18n value="82520a5b-4c2d-44cd-9447-90033f1d51fd"/>
 # MAGIC 
+# MAGIC You can also inject the value of a variable or expression into the output of a print statement
+# MAGIC 
+# MAGIC In Python 3.5, you would print it like this:
+
+# COMMAND ----------
+
+a = 1
+b = 2
+print("The sum of {} + {} is {}".format(a, b, a + b))
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="2a0dc9a0-7906-4609-aa86-06443572c4dd"/>
 # MAGIC 
 # MAGIC #### f-string Formatting
 # MAGIC 
-# MAGIC You can also print out variable and strings together using [f-string](https://www.w3schools.com/python/python_string_formatting.asp) formatting. Put an **`f`** at the beginning of the quotes, and place the variable inside of curly braces. The syntax looks like **`f"optional text {insert_variable_here} optional text"`**.
-
-# COMMAND ----------
-
-name = "Robin"
-age = 30
-
-print(f"My name is {name} and I am {age} years old")
-
-# COMMAND ----------
-
-# MAGIC %md <i18n value="973e1c76-964d-41f4-894f-98bad1ffb5b1"/>
+# MAGIC In Python 3.6 a new style for injecting the value of a variable or expression into a string was introduced, called [f-string](https://www.w3schools.com/python/python_string_formatting.asp) formatting. (The __f__ in __f-string__ is short for __formatted__. Put an **`f`** at the beginning of the quotes, and place the variable inside of curly braces. The syntax looks like **`f"optional text {insert_variable_here} optional text"`**.
 # MAGIC 
+# MAGIC In Python 3.6, you would print it like this:
+
+# COMMAND ----------
+
+a = 1
+b = 2
+print(f"The sum of {a} + {b} is {a + b}")
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="ab1b422e-a50c-4b2b-b303-62688a3f94ea"/>
+# MAGIC 
+# MAGIC You can even use f-string formatting to generate simple columnar output
+# MAGIC - The f-string {} placeholder can optionally include a column width following the value being rendered to generate simple, aligned output
+# MAGIC   - Numeric values are right justified
+# MAGIC   - String values are left justified
+# MAGIC - For the record, there are much <a href="https://docs.python.org/3/tutorial/inputoutput.html" target="_blank">better</a>, more powerful ways of doing this in Python
+
+# COMMAND ----------
+
+city1 = "San Francisco"
+city2 = "Paris"
+city3 = "Mumbai"
+
+temperature1 = 58
+temperature2 = 75
+temperature3 = 81
+
+humidity1 = .85
+humidity2 = .5
+humidity3 = .88 
+
+print(f"{'City':15} {'Temperature':15} {'Humidity':15}")
+print(f"{city1:15} {temperature1:11} {humidity1:12.2f}")
+print(f"{city2:15} {temperature2:11} {humidity2:12.2f}")
+print(f"{city3:15} {temperature3:11} {humidity3:12.2f}")
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="cab12ce0-f03c-4620-a0b4-38e67cf4ab9d"/>
+# MAGIC 
+# MAGIC By default, the print function separates the output for each argument from the next by a space, terminating the entire output with a newline, as illustrated below
+
+# COMMAND ----------
+
+print(1,2,3)
+print(4,5,6)
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="510d9858-a0f6-48d9-a337-215ad91db31e"/>
+# MAGIC 
+# MAGIC However, you can override this behavior by specifying custom delimiters as illustrated below
+
+# COMMAND ----------
+
+# Separator: '--' instead of ' '. Terminator: '. ' instead of a newline.
+print(1,2,3, sep='--', end='. ') 
+
+# Separator: '###' instead of ' '. Terminator: 'END' instead of a newline. 
+# Because the previous output is no longer terminated by a newline, it is printed on the same line as the output produced by line 2.
+print(4,5,6, sep='###', end='END') 
+
+# Print a blank line.  This will just be a new line
+print("") 
+
+# Separator: '' (none) instead of ' '. Terminator: '$' instead of a newline.
+print(1, 2, 3, sep='', end='$')
+
+# Separator: '\t' instead of ' '. Terminator: 'Done' instead of a newline. 
+# Because the previous output is no longer terminated by a newline, it is printed on the same line as the output produced by line 11.
+print(4, 5, 6, sep='\t', end='Done')
+
+# COMMAND ----------
+
+# MAGIC %md <i18n value="ddc22fc8-902d-49e5-baa9-62e61cc2f6d8"/>
 # MAGIC 
 # MAGIC **Congratulations! You have finished your first lesson on Python!**
 
